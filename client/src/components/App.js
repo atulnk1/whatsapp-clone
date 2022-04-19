@@ -4,6 +4,7 @@ import Login from "./Login";
 import Dashboard from "./Dashboard";
 import { ContactsProvider } from '../contexts/ContactsProvider';
 import { ConversationsProvider } from '../contexts/ConversationsProvider';
+import { SocketProvider } from '../contexts/SocketProvider';
 
 
 function App() {
@@ -12,11 +13,14 @@ function App() {
   // Need to wrap the ContactProvider around the Dashboard component so 
   // that we can provide the contacts and the creatContacts function to the Dashboard
   const dashboard = (
-    <ContactsProvider>
-      <ConversationsProvider id={id}>
-        <Dashboard id={id} />
-      </ConversationsProvider>
-    </ContactsProvider>
+    <SocketProvider id={id}>
+      <ContactsProvider>
+        <ConversationsProvider id={id}>
+          <Dashboard id={id} />
+        </ConversationsProvider>
+      </ContactsProvider>
+    </SocketProvider>
+    
   )
 
   return (

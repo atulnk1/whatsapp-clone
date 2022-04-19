@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect, useCallback } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { useContacts } from './ContactsProvider'
+import { useSocket } from './SocketProvider'
 
 const ConversationContext = React.createContext()
 
@@ -15,6 +16,7 @@ export function ConversationsProvider( {id, children} ) {
     // set selectedConversationIndex to first conversation if available
     const [selectedConversationIndex, setSelectedConversationIndex] = useState(0)
     const { contacts } = useContacts()
+    const socket = useSocket()
     
     const createConversation = (recipients) => {
         // Appending our new contact to the end of our conversations list
@@ -27,7 +29,7 @@ export function ConversationsProvider( {id, children} ) {
     // messages from our local to the server
     // All we have is an array of recipients and we need to find out what conversation the message 
     // needs to go to and if there are no conversations yet, create one with this new message at the start
-    const addMessageToConversation = ( {recipients, text, sender} ) => {
+    const addMessageToConversation = useCallback(( {recipients, text, sender} ) => {
         setConversations(prevConversations => {
             // check to see if we do have a conversation that matches the 
             // recipients that we pass to the function and if we don't we can add 
@@ -56,9 +58,19 @@ export function ConversationsProvider( {id, children} ) {
                 return [...prevConversations, {recipients, messages: [newMessage]}]
             }
         })
-    }
+    }, [setConversations])
+
+    useEffect(() =>{
+        if(socket == null ) return 
+
+        socket.on('receive-message', addMessageToConversation)
+
+        return () => socket.off('recieve-message') 
+    }, [socket, addMessageToConversation])
 
     const sendMessage = (recipients, text) => {
+        socket.emit('send-message', { recipients, text })
+
         addMessageToConversation( {recipients, text, sender: id })        
     }
     // variable to store the formatted conversations with the recipient id and name
