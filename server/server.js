@@ -1,3 +1,7 @@
+// This entire server.js file is different from the tutorial used as the 
+// newer version of socket.io require us to handle cors and use express to work with it
+// used the sections from https://socket.io/docs/v3/handling-cors/ and https://socket.io/get-started/chat
+// to implement this
 const express = require('express');
 const app = express();
 const http = require('http');
