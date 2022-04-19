@@ -23,7 +23,7 @@ export default function useLocalStorage(key, initialValue) {
     // Get value and store it into local storage
     // Any time our value or key change we need to store it into local storage
     useEffect(() => {
-        localstorage.setItem(prefixedKey, JSON.stringify(value))
+        localStorage.setItem(prefixedKey, JSON.stringify(value))
     }, [prefixedKey, value])
 
     return [value, setValue]
