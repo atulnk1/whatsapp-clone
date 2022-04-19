@@ -1,4 +1,4 @@
-# Project Title
+# WhatsApp Clone
 
 This is a simple WhatsApp clone made by mostly following this tutorial: https://www.youtube.com/watch?v=tBr-PybP_9c&ab_channel=WebDevSimplified
 
@@ -28,13 +28,6 @@ npm start
 * To Run the server.js, use 
 ```
 nodemon server.js
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
 ```
 
 ## Authors
