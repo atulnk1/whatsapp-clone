@@ -41,7 +41,7 @@ export default function OpenConversation() {
                     {selectedConversation.messages.map((message, index) => {
                         const lastMessage = selectedConversation.messages.length - 1 === index 
                         return (
-                            <div ref={lastMessage ? setRef : null} key={index} className={`my-1 d-flex flex-column ${message.fromMe ? 'align-self-end' : ''}`}>
+                            <div ref={lastMessage ? setRef : null} key={index} className={`my-1 d-flex flex-column ${message.fromMe ? 'align-self-end align-items-end' : 'align-items-start'}`}>
                                 {/* rounded box with some padding on x and y axis */}
                                 <div className={`rounded px-2 py-1 ${message.fromMe ? 'bg-primary text-white' : 'border'}`}>
                                     {message.text}
