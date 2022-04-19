@@ -63,6 +63,7 @@ export function ConversationsProvider( {id, children} ) {
     }
     // variable to store the formatted conversations with the recipient id and name
     const formattedConversations = conversations.map((conversation, index) => {
+        
         const recipients = conversation.recipients.map(recipient => {
             const contact = contacts.find(contact => {
                 return contact.id === recipient
@@ -72,8 +73,18 @@ export function ConversationsProvider( {id, children} ) {
             return { id: recipient, name }
         })
 
+        const messages = conversation.messages.map(message => {
+            const contact = contacts.find(contact => {
+                return contact.id === message.sender
+            })
+            const name = (contact && contact.name) || message.sender
+            const fromMe = id === message.sender 
+
+            return { ...message, senderName: name, fromMe}
+        })
+
         const selected = index === selectedConversationIndex
-        return { ...conversation, recipients, selected }
+        return { ...conversation, recipients, messages, selected }
     })
 
     const value = {
