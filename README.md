@@ -44,5 +44,5 @@ Inspiration, code snippets, etc.
 ## Video
 
 Demo of how this WhatsApp Clone works:
-[![WhatsApp Clone](https://drive.google.com/file/d/19zBUfnSIPr2C3Jnl5TgrWAIhgxw4oxPB/view?usp=sharing)]
+[![WhatsApp Clone](https://drive.google.com/file/d/19zBUfnSIPr2C3Jnl5TgrWAIhgxw4oxPB/preview)]
 (https://drive.google.com/file/d/1LC2dSVoa64qj6zUWO0EBlYcGyp-ovCpo/view?usp=sharing "WhatsApp Clone")
