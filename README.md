@@ -40,3 +40,8 @@ Inspiration, code snippets, etc.
 * [WhatsApp Clone](https://www.youtube.com/watch?v=tBr-PybP_9c&ab_channel=WebDevSimplified)
 * [Quickstart socket.io](https://socket.io/get-started/chat)
 * [Handling cors for socket.io](https://socket.io/docs/v3/handling-cors/)
+
+## Video
+
+Demo of how this WhatsApp Clone works:
+(https://drive.google.com/file/d/1LC2dSVoa64qj6zUWO0EBlYcGyp-ovCpo/view?usp=sharing "WhatsApp Clone")
